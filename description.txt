@@ -1,0 +1,6 @@
+aspHide is a python based tool that aims to provide basic features Steganography tool.
+This tool uses the LSB algorithm and utilizes the R channel of the RGB color code, from
+the provided image. This technique hides the message by encoding it in binary format
+and inserting the bits in three bits of the LSB side in R channal color.
+
+Developed by npoudelp.
