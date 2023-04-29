@@ -72,7 +72,7 @@ def getName():
     return imageName
 
 
-admin = "npoudelp"
+admin = "nirojpoudel.com.np"
 error = ""
 imageName = None
 userDir = None
