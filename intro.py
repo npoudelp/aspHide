@@ -1,7 +1,7 @@
 import time
 
 def showAsp():
-    with open('asp.txt', 'r') as brand:
+    with open('./txtFiles/asp.txt', 'r') as brand:
         lines = [line.rstrip('\n') for line in brand.readlines()]
         for line in lines:
             print(line)
@@ -9,7 +9,7 @@ def showAsp():
 
 
 def showBrand():
-    with open('brand.txt', 'r') as brand:
+    with open('./txtFiles/brand.txt', 'r') as brand:
         lines = [line.rstrip('\n') for line in brand.readlines()]
         for line in lines:
             print(line)
