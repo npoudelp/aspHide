@@ -26,6 +26,7 @@ def main(ack):
         print(f'\nError::: {showErr()}\n')
 
     print("\nThis is the main menu of aspHide")
+    print("0>\tExit")
     print("1>\tHide message in image")
     print("2>\tRead message from image")
     print("3>\tAbout the application")
@@ -33,16 +34,24 @@ def main(ack):
 
     try:
         selectedNumber = int(input(f"Select your option (1-{optionRange}): "))
+        if selectedNumber == 0:
+            si.clear()
+            print(open("./txtFiles/smile.txt", "r").read())
+            userInput = input("\n\t\tPress enter to quit  ")
+            if userInput:
+                print(userInput)
+                si.clear()
+                quit()
         if selectedNumber == 1:
             si.start()
             print(f"Full path of your image is {si.getName()}")
-            time.sleep(2)
-            hm.hide()
+            time.sleep(0.5)
+            hm.hide(si.getName())
             main("hidden")
         elif selectedNumber == 2:
             si.start()
             print(f"Full path of your image is {si.getName()}")
-            time.sleep(2)
+            time.sleep(0.5)
             sm.show()
             main("shown")
         elif selectedNumber == 3:
@@ -52,7 +61,7 @@ def main(ack):
             error = "Number out of range"
     except ValueError:
         error = "Only number accepted"
-        main()
+        main("")
 
 
 error = ""
