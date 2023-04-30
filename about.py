@@ -5,11 +5,9 @@ def aboutApp():
     system("clear")
     showBrand()
     print("\n")
-    aboutFile = open("description.txt", "r")
+    aboutFile = open("./txtFiles/description.txt", "r")
     print(aboutFile.read())
     print("\n")
-    userInput = input("Enter any to go to main menu: ")
+    userInput = input("Press enter to go to main menu")
     if userInput:
-        print(userInput)
-    else:
-        aboutApp()
+        pass
