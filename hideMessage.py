@@ -7,7 +7,16 @@ import codecs
 
 def getText():
     text = input("Enter the message: \n")
-    return text
+    text = text + " [END]"
+
+    encodedText = ""
+
+    for char in text:
+        acsiiOfChar = ord(char)
+        binOfChar = f"{acsiiOfChar:08b}"
+        encodedText = encodedText + binOfChar
+
+    return encodedText
 
 
 def hide(imageName):
@@ -15,5 +24,5 @@ def hide(imageName):
     for y in range(img.size[0]):
         for x in range(img.size[1]):
             r, g, b = img.getpixel((x, y))
-            print(r, g, b)
+
     input("Holding...")
