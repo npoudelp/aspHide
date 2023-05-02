@@ -20,9 +20,11 @@ def getText():
 
 
 def hide(imageName):
+    getText()
+
     img = Image.open(imageName)
-    for y in range(img.size[0]):
-        for x in range(img.size[1]):
+    for y in range(img.size[1]):
+        for x in range(img.size[0]):
             r, g, b = img.getpixel((x, y))
 
     input("Holding...")
