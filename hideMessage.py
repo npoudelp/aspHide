@@ -1,8 +1,7 @@
 import time
-import numpy as np
+from datetime import datetime
+import os
 from PIL import Image
-import sys
-import codecs
 
 
 def getText():
@@ -20,11 +19,30 @@ def getText():
 
 
 def hide(imageName):
-    getText()
-
+    text = getText()
+    print(text)
+    pixelToHide = len(text) / 2
     img = Image.open(imageName)
+    loadImg = img.load()
+    pixelCount = 0
+    textStart = 0
+    textEnd = textStart + 2
     for y in range(img.size[1]):
+        if pixelCount == pixelToHide:
+            break
         for x in range(img.size[0]):
             r, g, b = img.getpixel((x, y))
+            binR = f"{r:08b}"
+            textSection = text[textStart: textEnd]
+            textStart = textStart + 2
+            textEnd = textStart + 2
+            encodedBinR = binR[:6] + textSection
+            encodedDecR = int(encodedBinR, 2)
+            loadImg[x, y] = (encodedDecR, g, b)
+            pixelCount = pixelCount + 1
+            if pixelCount == pixelToHide:
+                break
 
-    input("Holding...")
+    img.save(f"{os.path.expanduser('~')}/encoded-{datetime.now()}.{img.format.lower()}")
+    print("Your message is successfully hidden in image")
+    time.sleep(1)
