@@ -1,3 +1,5 @@
+import os.path
+
 import selectImage as si
 import time
 import intro
@@ -18,7 +20,7 @@ def main(ack):
     intro.showBrand()
 
     if ack == "hidden":
-        print(f"\nYour message is hidden in {si.getName()}")
+        print(f"\nYour message is hidden in {os.path.expanduser('~')}")
     if ack == "about":
         print(f"\nWould you like to give suggestion? nirojpoudel.com.np")
 
