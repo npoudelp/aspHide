@@ -13,7 +13,7 @@ Using aspHide
 - [END] is used as escape sequence that detects the end of message. So, don't type [END] in message.
 - Once the message is hidden into image, you will be redirected to main menu and image saved directory will be shown. (~/)
 - Once the message is extracted from the image, the message is displayed in the terminal and asks for input.
-- r! -> to write the text to a file in ~/ dir
+- w! -> to write the text to a file in ~/ dir
 - q! -> exit without saving the file
 
 Library used from Python
