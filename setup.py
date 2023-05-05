@@ -15,7 +15,7 @@ dirInHome = listdir(dirOfHome)
 for files in dirInHome:
     if files == ".bashrc" or files == ".zshrc":
         openFile = open(f'{dirOfHome}/{files}', 'a')
-        addAlias = f'\nalias aspHide = "python {dirOfIndex}"'
+        addAlias = f"\nalias aspHide='python {dirOfIndex}'"
         openFile.write(addAlias)
 
 chdir(path.dirname(__file__))
