@@ -20,7 +20,6 @@ def getText():
 
 def hide(imageName):
     text = getText()
-    print(text)
     pixelToHide = len(text) / 2
     img = Image.open(imageName)
     loadImg = img.load()
@@ -40,9 +39,14 @@ def hide(imageName):
             encodedDecR = int(encodedBinR, 2)
             loadImg[x, y] = (encodedDecR, g, b)
             pixelCount = pixelCount + 1
+
             if pixelCount == pixelToHide:
                 break
 
-    img.save(f"{os.path.expanduser('~')}/encoded-{datetime.now()}.{img.format.lower()}")
-    print("Your message is successfully hidden in image")
+    img.save(f"{os.path.expanduser('~')}/encoded-{datetime.now()}.{'png'}", format="png")
+    img.close()
+    print("\nMessage hidden successfully...")
+    hold = input("\nPress enter to continue...")
     time.sleep(1)
+
+
