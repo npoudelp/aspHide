@@ -40,22 +40,26 @@ def main(ack):
             si.clear()
             print(open("./txtFiles/smile.txt", "r").read())
             userInput = input("\n\t\tPress enter to quit  ")
-            if userInput:
-                print(userInput)
-                si.clear()
-                quit()
+            si.clear()
+            quit()
         if selectedNumber == 1:
             si.start()
             print(f"Full path of your image is {si.getName()}")
             time.sleep(0.5)
-            hm.hide(si.getName())
-            main("hidden")
+            if si.getName() == "[EXIT]":
+                main("")
+            else:
+                hm.hide(si.getName())
+                main("hidden")
         elif selectedNumber == 2:
             si.start()
             print(f"Full path of your image is {si.getName()}")
             time.sleep(0.5)
-            sm.show()
-            main("shown")
+            if si.getName() == "[EXIT]":
+                main("")
+            else:
+                sm.show(si.getName())
+                main("shown")
         elif selectedNumber == 3:
             about.aboutApp()
             main("about")
@@ -71,5 +75,5 @@ aspShowRun = False
 optionRange = "3"
 si.clear()
 intro.showAsp()
-time.sleep(0.5)
+time.sleep(0.2)
 main("")
