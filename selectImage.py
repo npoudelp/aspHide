@@ -1,7 +1,10 @@
 import os
 
+
 def clear():
     os.system('clear')
+
+
 def showErr():
     global error
     return error
@@ -57,8 +60,12 @@ def select():
                 if selectedFile.endswith('.png') or selectedFile.endswith('.jpg') or selectedFile.endswith('.jpeg'):
                     imageName = f'{userDir}/{selectedFile}'
                 else:
-                    error = "Only .png, .jpeg and .jpg file format are supported for now"
+                    error = "Only .jpeg and .jpg file format are supported for now"
                     select()
+
+        elif fileNumber == 0:
+            end()
+
         else:
             error = "Number out of range"
             select()
@@ -70,6 +77,11 @@ def select():
 def getName():
     global imageName
     return imageName
+
+
+def end():
+    global imageName
+    imageName = "[EXIT]"
 
 
 admin = "nirojpoudel.com.np"
