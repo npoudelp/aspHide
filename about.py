@@ -1,6 +1,8 @@
 import time
 from os import system
 from intro import showBrand
+
+
 def aboutApp():
     system("clear")
     showBrand()
