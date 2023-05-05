@@ -1,18 +1,35 @@
 import time
+import os
+from datetime import datetime
 
-import intro
+from intro import showBrand
 import selectImage as si
 from PIL import Image
 
 escSeq = "001000000101101101000101010011100100010001011101"
 
+fileExp = ""
 
-def hold():
-    checkToExit = input("\nEnter '!q' to exit: ")
-    if checkToExit == '!q':
+
+def writeTextToFile(text):
+    global imgName, fileExp
+    fileName = f"{os.path.expanduser('~')}/{datetime.now()}.txt"
+    fileExp = fileName
+    openFile = open(fileName, 'w')
+    openFile.write(text)
+
+
+def hold(text):
+    checkToExit = input("\nEnter 'q!' to exit without saving and 'w!' to save and exit: ")
+    if checkToExit == 'q!':
         pass
+    elif checkToExit == 'w!':
+        writeTextToFile(text)
+        si.clear()
+        print(f"Your message is saved in {fileExp}")
+        holding = input("Enter to continue...")
     else:
-        hold()
+        hold(text)
 
 
 def display(text):
@@ -21,8 +38,9 @@ def display(text):
 
 def show(imageName):
     global escSeq
+    global imgName
+    imgName = imageName
     si.clear()
-    intro.showBrand()
 
     print(f"Selecting image {imageName}\n")
     binText = ""
@@ -55,9 +73,14 @@ def show(imageName):
         loopCount = loopCount + 1
 
     print("Message extracted successfully...")
-    time.sleep(0.5)
+    time.sleep(2)
     si.clear()
-    intro.showBrand()
-    print("\n\tYour message ends with [END]\n")
+    os.chdir(f"{os.path.dirname(__file__)}")
+    showBrand()
+    print("\nYour message ends with [END]\n")
     print(display(decodedMessage))
-    hold()
+    hold(decodedMessage)
+
+
+message = ""
+imgName = ""
