@@ -49,7 +49,7 @@ def select():
 
     try:
         fileNumber = int(input(f"Select file number (1-{getLenOfDir()}): "))
-        if getLenOfDir() >= fileNumber > 0:
+        if getLenOfDir() >= fileNumber >= 1:
             selectedFile = os.listdir(userDir)[fileNumber - 1]
             newUserDir = f"{userDir}/{selectedFile}"
             if os.path.isdir(newUserDir) and '.' not in selectedFile:
