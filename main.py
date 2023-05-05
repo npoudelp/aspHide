@@ -23,9 +23,9 @@ def main(ack):
     if ack == "hidden":
         print(f"\nYour message is hidden in {os.path.expanduser('~')}")
     if ack == "about":
-        print(f"\nWould you like to give suggestion? nirojpoudel.com.np")
+        print(f"\nWould you like to give suggestion? https://nirojpoudel.com.np/pages/contact.php")
 
-    if (len(error) > 1):
+    if len(error) > 1:
         print(f'\nError::: {showErr()}\n')
 
     print("\nThis is the main menu of aspHide")
@@ -71,6 +71,7 @@ def main(ack):
         main("")
 
 
+os.chdir(f"{os.path.dirname(__file__)}")
 error = ""
 aspShowRun = False
 optionRange = "3"
