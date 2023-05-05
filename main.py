@@ -15,6 +15,7 @@ def showErr():
 
 
 def main(ack):
+    os.chdir(f"{os.path.dirname(__file__)}")
     global error
     si.clear()
     intro.showBrand()
@@ -75,5 +76,5 @@ aspShowRun = False
 optionRange = "3"
 si.clear()
 intro.showAsp()
-time.sleep(0.2)
+time.sleep(0.01)
 main("")
