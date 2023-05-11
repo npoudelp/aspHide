@@ -11,6 +11,7 @@ import showMessgae as sm
 def checkPython():
     check = os.system('python --version')
     if check != 0:
+        print("Err:: This program needs python to run. Please install it and try again...")
         quit()
 
 
