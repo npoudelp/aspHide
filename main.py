@@ -1,4 +1,4 @@
-import os.path
+import os
 
 import selectImage as si
 import time
@@ -6,6 +6,12 @@ import intro
 import about
 import hideMessage as hm
 import showMessgae as sm
+
+
+def checkPython():
+    check = os.system('python --version')
+    if check != 0:
+        quit()
 
 
 def showErr():
@@ -78,4 +84,5 @@ optionRange = "3"
 si.clear()
 intro.showAsp()
 time.sleep(0.01)
+checkPython()
 main("")
