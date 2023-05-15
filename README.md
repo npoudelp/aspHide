@@ -2,7 +2,8 @@
 
 A CLI based steganography tool, that has functionality of inserting text messages in jpg and jpeg image.
 This program uses the two bit of LSB of the R channel of each pixel of selected image to hide the binary encoded
-message, provided by users.
+message, provided by users. It takes password from user while hiding message and receiver needs to provide the message inorder to see
+the hidden message.
 
 This program is designed to run in terminal of linux machine. Other os may not support the file handling
 process that is used in the program.
