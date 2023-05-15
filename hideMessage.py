@@ -5,10 +5,14 @@ from PIL import Image
 
 
 def getText():
-    text = input("Enter the message: \n")
-    text = text + " [END]"
+    password = input("Enter your password to lock the message: ")
+    password = password + "[{^]"
+
+    message = input("Enter the message: \n")
+    message = message + " [END]"
 
     encodedText = ""
+    text = password + message
 
     for char in text:
         acsiiOfChar = ord(char)
