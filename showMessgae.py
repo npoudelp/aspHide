@@ -50,6 +50,7 @@ def checkPassword():
     global escSeqForPassword, imgName, passwordFlag, wrongCount, passkey
     print("!!You only get one change to enter password...")
     password = input("Password (for main menu: [MAIN]): ")
+    si.clear()
     password = password + '[{^]'
     passkey = password
     encodedPassword = ""
