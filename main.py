@@ -50,7 +50,7 @@ def main(ack):
             userInput = input("\n\t\tPress enter to quit  ")
             si.clear()
             quit()
-        if selectedNumber == 1:
+        elif selectedNumber == 1:
             si.start()
             print(f"Full path of your image is {si.getName()}")
             time.sleep(0.5)
@@ -73,6 +73,7 @@ def main(ack):
             main("about")
         else:
             error = "Number out of range"
+            main("")
     except ValueError:
         error = "Only number accepted"
         main("")
