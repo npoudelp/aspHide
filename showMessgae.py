@@ -11,6 +11,7 @@ escSeqForPassword = "01011011011110110101111001011101"
 passwordFlag = 0
 wrongCount = 0
 fileExp = ""
+passkey = ""
 
 
 def writeTextToFile(text):
@@ -19,6 +20,13 @@ def writeTextToFile(text):
     fileExp = fileName
     openFile = open(fileName, 'w')
     openFile.write(text)
+
+
+def refineText(text):
+    global passkey
+    refinedText = text.replace(passkey, "")
+    refinedText = refinedText.replace("[END]", "")
+    return refinedText
 
 
 def hold(text):
@@ -39,15 +47,15 @@ def display(text):
 
 
 def checkPassword():
-    global escSeqForPassword, imgName, passwordFlag, wrongCount
-    if passwordFlag != 0:
-        si.clear()
-        print("Wrong password\n")
+    global escSeqForPassword, imgName, passwordFlag, wrongCount, passkey
+    print("!!You only get one change to enter password...")
     password = input("Password (for main menu: [MAIN]): ")
     password = password + '[{^]'
+    passkey = password
     encodedPassword = ""
     if password == '[MAIN][{^]':
-        return '[MAIN]'
+        returnFlag = '[MAIN]'
+        return returnFlag
     else:
         passwordFromImage = ""
         for char in password:
@@ -71,12 +79,7 @@ def checkPassword():
         if passwordFromImage == encodedPassword:
             return '[YES]'
         else:
-            passwordFlag = 1
-            wrongCount = wrongCount + 1
-            if wrongCount >= 3:
-                return '[NO]'
-            checkPassword()
-
+            return "[NO]"
 
 def show(imageName):
     global escSeqForMessage, passwordFlag, wrongCount, imgName
@@ -86,7 +89,6 @@ def show(imageName):
     si.clear()
 
     status = checkPassword()
-
     if status == '[YES]':
         print(f"Selecting image {imageName}\n")
         binText = ""
@@ -123,13 +125,13 @@ def show(imageName):
         si.clear()
         os.chdir(f"{os.path.dirname(__file__)}")
         showBrand()
-        print("\nYour message ends with [END]\n")
-        print(display(decodedMessage))
-        hold(decodedMessage)
+        print("\nMessage::")
+        refinedText = refineText(decodedMessage)
+        print(display(refinedText))
+        hold(refinedText)
 
     elif status == '[NO]':
-        name = input("Hold: ")
-        print(name)
+        input("\nYou entered wrong password...")
     else:
         print("\nUnknown error occurred...")
 
