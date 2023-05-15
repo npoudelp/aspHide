@@ -7,7 +7,7 @@ from PIL import Image
 def getText():
     password = input("Enter your password to lock the message: ")
     password = password + "[{^]"
-
+    os.system("clear")
     message = input("Enter the message: \n")
     message = message + " [END]"
 
@@ -23,7 +23,9 @@ def getText():
 
 
 def hide(imageName):
+    os.system("clear")
     text = getText()
+    os.system("clear")
     pixelToHide = len(text) / 2
     img = Image.open(imageName)
     loadImg = img.load()
