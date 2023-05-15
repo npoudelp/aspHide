@@ -71,9 +71,11 @@ def main(ack):
         elif selectedNumber == 3:
             about.aboutApp()
             main("about")
-        else:
+        elif selectedNumber > 3:
             error = "Number out of range"
             main("")
+        else:
+            error = "Unexpected error occurred..."
     except ValueError:
         error = "Only number accepted"
         main("")
