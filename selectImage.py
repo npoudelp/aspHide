@@ -8,14 +8,13 @@ def clear():
 def showErr():
     global error
     return error
-    error = ""
 
 
 def start():
     global admin, userDir, error
     if len(error) > 0:
         print(f'\nError::: {showErr()}\n')
-
+        error = ""
     userDir = input("Directory you want to begin with (/): ")
     if userDir != "" and os.path.exists(userDir):
         select()
@@ -42,6 +41,7 @@ def select():
 
     if len(error) > 0:
         print(f'\nError::: {showErr()}\n')
+        error = ""
 
     print(f"You are on {userDir}")
     for count, file in enumerate(os.listdir(userDir)):
