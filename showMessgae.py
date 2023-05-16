@@ -1,3 +1,6 @@
+import base64
+import hashlib
+from cryptography.fernet import Fernet
 import time
 import os
 from datetime import datetime
@@ -12,6 +15,7 @@ passwordFlag = 0
 wrongCount = 0
 fileExp = ""
 passkey = ""
+passToDecrypt = ""
 
 
 def writeTextToFile(text):
@@ -24,8 +28,8 @@ def writeTextToFile(text):
 
 def refineText(text):
     global passkey
-    refinedText = text.replace(passkey, "")
-    refinedText = refinedText.replace("[END]", "")
+    refinedText = text.replace(f"{passkey}b'", "")
+    refinedText = refinedText.replace("' [END]", "")
     return refinedText
 
 
@@ -43,21 +47,38 @@ def hold(text):
 
 
 def display(text):
+    global passToDecrypt
+    fernet = Fernet(passToDecrypt)
+    text = fernet.decrypt(text)
+    text = str(text)
+    remove = text[:2]
+    text = text.replace(remove, "")
+    remove = text[-1]
+    text = text.replace(remove, "")
     return text
 
 
 def checkPassword():
-    global escSeqForPassword, imgName, passwordFlag, wrongCount, passkey
+    global escSeqForPassword, imgName, passwordFlag, wrongCount, passkey, passToDecrypt
     print("!!You only get one change to enter password...")
     password = input("Password (for main menu: [MAIN]): ")
     si.clear()
-    password = password + '[{^]'
-    passkey = password
-    encodedPassword = ""
+
     if password == '[MAIN][{^]':
         returnFlag = '[MAIN]'
         return returnFlag
     else:
+        remain = 32 - len(password)
+        password = password + "0" * remain
+        passByte = bytes(password, 'ascii')
+        hashPass = hashlib.md5(passByte)
+        basePass = base64.b64encode(passByte)
+        password = str(hashPass.digest()) + '[{^]'
+
+        passkey = password
+        passToDecrypt = basePass
+        encodedPassword = ""
+
         passwordFromImage = ""
         for char in password:
             acsiiOfChar = ord(char)
@@ -81,6 +102,7 @@ def checkPassword():
             return '[YES]'
         else:
             return "[NO]"
+
 
 def show(imageName):
     global escSeqForMessage, passwordFlag, wrongCount, imgName
