@@ -2,10 +2,10 @@
 
 A CLI based steganography tool, that has functionality of inserting text messages in jpg and jpeg image.
 This program uses the two bit of LSB of the R channel of each pixel of selected image to hide the binary encoded
-message, provided by users. It takes password from user while hiding message which has to be verified by receiver inorder to see
-the hidden message. The password is than hashed and message is encrypted with the password. Then hashed password and 
+message, provided by user. It takes encryption key from user while hiding message which has to be verified by receiver inorder to see
+the hidden message. The encryption key is than hashed and message is encrypted with the encryption key. Then hashed encryption key and 
 encrypted message are combined to form a long string. The string is then hidden in image.<br>
-The process is reverserd to display the unencrypted message upon the insertion of correct password by receiver.
+The process is reversed to display the unencrypted message upon the insertion of correct decryption key by receiver.
 
 This program is designed to run in terminal of linux machine. Other os may not support the file handling
 process that is used in the program.
@@ -15,7 +15,7 @@ If you have any suggestion, feel free to leave it. <a href="https://nirojpoudel.
 <h3><u>Using aspHide</u></h3>
 - <i>python main.py</i>  :main.py is the index file for the program.<br>
 - Selecting file process automatically detects the selected file type and accepts only jpg or jpeg file and changes directory if dir is selected.<br>
-- [{^] is used as escape sequence for password which denotes the end of password. So, don't type [{^] in password.<br>
+- [{^] is used as escape sequence that detects the end of encryption key. So, don't type [{^] in encryption key.<br>
 - [END] is used as escape sequence that detects the end of message. So, don't type [END] in message.<br>
 - Once the message is hidden into image, you will be redirected to main menu and image saved directory will be shown. (~/)<br>
 - To see the hidden message user needs to provide the decryption key, and only gets a single try do so.<br> 
@@ -27,3 +27,6 @@ If you have any suggestion, feel free to leave it. <a href="https://nirojpoudel.
 - PIL<br>
 - OS<br>
 - time<br>
+- cryptography.fernet.Fernet<br>
+- base64<br>
+- hashlib<br>
