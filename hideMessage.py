@@ -26,8 +26,6 @@ def getText():
 
     encodedText = ""
     text = password + message
-    print(text)
-    input('hold...')
     for char in text:
         acsiiOfChar = ord(char)
         binOfChar = f"{acsiiOfChar:08b}"
