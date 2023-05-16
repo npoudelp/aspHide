@@ -60,8 +60,7 @@ def display(text):
 
 def checkPassword():
     global escSeqForPassword, imgName, passwordFlag, wrongCount, passkey, passToDecrypt
-    print("!!You only get one change to enter password...")
-    password = input("Password (for main menu: [MAIN]): ")
+    password = input("Decryption Key (to goto menu: [MAIN]): ")
     si.clear()
 
     if password == '[MAIN][{^]':

@@ -8,7 +8,7 @@ import hashlib
 
 
 def getText():
-    password = input("Enter your password to lock the message: ")
+    password = input("Enter your encryption key to lock the message: ")
     os.system("clear")
     remain = 32 - len(password)
     password = password + '0' * remain
