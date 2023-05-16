@@ -2,18 +2,32 @@ import time
 from datetime import datetime
 import os
 from PIL import Image
+from cryptography.fernet import Fernet
+import base64
+import hashlib
 
 
 def getText():
     password = input("Enter your password to lock the message: ")
-    password = password + "[{^]"
     os.system("clear")
+    remain = 32 - len(password)
+    password = password + '0' * remain
+    passByte = bytes(password, 'ascii')
+    hashPass = hashlib.md5(passByte)
+    basePass = base64.b64encode(passByte)
+    hashPass = str(hashPass.digest())
+    password = hashPass + "[{^]"
+
     message = input("Enter the message: \n")
-    message = message + " [END]"
+    fernet = Fernet(basePass)
+    message = bytes(message, 'ascii')
+    message = fernet.encrypt(message)
+    message = str(message) + " [END]"
 
     encodedText = ""
     text = password + message
-
+    print(text)
+    input('hold...')
     for char in text:
         acsiiOfChar = ord(char)
         binOfChar = f"{acsiiOfChar:08b}"
