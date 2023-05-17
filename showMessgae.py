@@ -149,8 +149,9 @@ def show(imageName):
         showBrand()
         print("\nMessage::")
         refinedText = refineText(decodedMessage)
-        print(display(refinedText))
-        hold(refinedText)
+        decryptedText = display(refinedText)
+        print(decryptedText)
+        hold(decryptedText)
 
     elif status == '[NO]':
         input("\nYou entered wrong password...")
