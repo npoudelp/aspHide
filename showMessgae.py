@@ -49,7 +49,7 @@ def hold(text):
 def display(text):
     global passToDecrypt
     fernet = Fernet(passToDecrypt)
-    text = fernet.decrypt(text)
+    text = fernet.decrypt(bytes(text, 'ascii'))
     text = str(text)
     remove = text[:2]
     text = text.replace(remove, "")
@@ -63,7 +63,7 @@ def checkPassword():
     password = input("Decryption Key (to goto menu: [MAIN]): ")
     si.clear()
 
-    if password == '[MAIN][{^]':
+    if password == '[MAIN]':
         returnFlag = '[MAIN]'
         return returnFlag
     else:
