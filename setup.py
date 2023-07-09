@@ -17,6 +17,7 @@ for files in dirInHome:
         openFile = open(f'{dirOfHome}/{files}', 'a')
         addAlias = f"\nalias aspHide='python {dirOfIndex}'"
         openFile.write(addAlias)
+        openFile.close()
 
 chdir(path.dirname(__file__))
 os.remove("setup.py")
