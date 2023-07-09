@@ -7,7 +7,7 @@ process that is used in the program.
 
 Inorder to share image that contains message to other over internet, use the platform that does not compress the image. Else the compression may lead to corrupt message or no message at all.
 
-If you have any suggestion, feel free to leave it. https://nirojpoudel.com.np/pages/contact.php
+If you have any suggestion, feel free to leave it. hello@nirojpoudel.com.np
 
 Using aspHide
 - python main.py  :main.py is the index file for the program.
