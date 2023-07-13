@@ -35,19 +35,19 @@ def main(ack):
     if len(error) > 1:
         print(f'\nError::: {showErr()}\n')
 
-    print("\nThis is the main menu of aspHide")
-    print("0>\tExit")
-    print("1>\tHide message in image")
-    print("2>\tRead message from image")
-    print("3>\tAbout the application")
+    print("\nMain menu of aspHide\n")
+    print("++[0]\tExit")
+    print("++[1]\tHide message in image")
+    print("++[2]\tRead message from image")
+    print("++[3]\tAbout the application")
     print("\n")
 
     try:
-        selectedNumber = int(input(f"Select your option (1-{optionRange}): "))
+        selectedNumber = int(input(f"Select your option (0-{optionRange}): "))
         if selectedNumber == 0:
             si.clear()
             print(open("./txtFiles/smile.txt", "r").read())
-            userInput = input("\n\t\tPress enter to quit  ")
+            time.sleep(1)
             si.clear()
             quit()
         elif selectedNumber == 1:
@@ -71,7 +71,7 @@ def main(ack):
         elif selectedNumber == 3:
             about.aboutApp()
             main("about")
-        elif selectedNumber > 3:
+        elif selectedNumber > 3 or selectedNumber < 0:
             error = "Number out of range"
             main("")
         else:
