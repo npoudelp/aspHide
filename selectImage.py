@@ -43,9 +43,10 @@ def select():
         print(f'\nError::: {showErr()}\n')
         error = ""
 
-    print(f"You are on {userDir}")
-    for count, file in enumerate(os.listdir(userDir)):
-        print(f"{count + 1}>\t{file}")
+    print(f"You are on (0 to main menu): [+]{userDir}")
+    for count, file in enumerate(os.listdir(userDir)):        
+        if file.endswith(".jpg") or file.endswith(".jpeg") or file.endswith(".png") or not file.startswith("."):
+            print(f"++[{count + 1}]\t{file}")
 
     try:
         fileNumber = int(input(f"Select file number (1-{getLenOfDir()}): "))
@@ -84,7 +85,7 @@ def end():
     imageName = "[EXIT]"
 
 
-admin = "nirojpoudel.com.np"
+admin = "hello@nirojpoudel.com.np"
 error = ""
 imageName = None
 userDir = None
