@@ -8,7 +8,7 @@ import hashlib
 
 
 def getText():
-    password = input("Enter your encryption key to lock the message: ")
+    password = input("Password to lock messaeg (Don't use [MAIN] as your password): ")
     os.system("clear")
     remain = 32 - len(password)
     password = password + '0' * remain
@@ -64,7 +64,6 @@ def hide(imageName):
     img.save(f"{os.path.expanduser('~')}/encoded-{datetime.now()}.{'png'}", format="png")
     img.close()
     print("\nMessage hidden successfully...")
-    hold = input("\nPress enter to continue...")
     time.sleep(1)
 
 
