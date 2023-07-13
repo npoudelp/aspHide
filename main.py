@@ -11,7 +11,7 @@ import showMessgae as sm
 def checkPython():
     check = os.system('python --version')
     if check != 0:
-        print("Err:: This program needs python to run. Please install it and try again...")
+        print("Err:: This program needs python to run. Please install python and try again...")
         quit()
 
 
@@ -36,7 +36,7 @@ def main(ack):
         print(f'\nError::: {showErr()}\n')
 
     print("\nMain menu of aspHide\n")
-    print("++[0]\tExit")
+    print("++[0]\tExit\n")
     print("++[1]\tHide message in image")
     print("++[2]\tRead message from image")
     print("++[3]\tAbout the application")
@@ -87,6 +87,7 @@ aspShowRun = False
 optionRange = "3"
 si.clear()
 intro.showAsp()
-time.sleep(0.01)
+time.sleep(0.05)
+si.clear()
 checkPython()
 main("")
