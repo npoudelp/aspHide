@@ -1,5 +1,5 @@
 import os
-
+import time
 
 def clear():
     os.system('clear')
@@ -15,15 +15,18 @@ def start():
     if len(error) > 0:
         print(f'\nError::: {showErr()}\n')
         error = ""
+        time.sleep(0.5)
     userDir = input("Directory you want to begin with (/): ")
     if userDir != "" and os.path.exists(userDir):
         select()
     elif userDir == "":
         print("\nSelecting root (/) directory as default directory\n")
         userDir = "/"
+        time.sleep(0.5)
         select()
     elif not os.path.exists(userDir):
         error = "Given directory is not valid"
+        time.sleep(0.5)
         start()
     else:
         print(f"\nError on selection: Please report to {admin}\n")
